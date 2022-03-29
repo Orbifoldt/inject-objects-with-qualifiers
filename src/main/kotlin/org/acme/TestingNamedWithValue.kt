@@ -8,7 +8,7 @@ import javax.ws.rs.Path
 
 @Path("/named-with-value")
 class TestingNamedWithValue(
-    @Named("tree") private val text: String
+    @Named("fruit") private val text: String
 ) {
     @GET
     fun hello() = text

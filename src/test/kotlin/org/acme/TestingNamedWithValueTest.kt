@@ -14,6 +14,6 @@ internal class TestingNamedWithValueTest {
             .`when`().get("/named-with-value")
             .then()
             .statusCode(200)
-            .body(CoreMatchers.`is`("maple"))
+            .body(CoreMatchers.`is`("kiwi"))
     }
 }

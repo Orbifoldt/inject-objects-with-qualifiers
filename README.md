@@ -5,7 +5,7 @@ This project demonstrates simple usage the `@javax.enterprise.inject.Produces` a
 > :warning: **Warning**: The discussed annotations here are the default `@javax.inject.Qualifier`, `@javax.inject.Named` and `@javax.enterprise.inject.Produces` ones. In Spring the equivalents are `@org.springframework.beans.factory.annotation.Qualifier`, `@org.springframework.stereotype.Component` and `@org.springframework.context.annotation.Bean`, respectively. These do behave slightly differently, so do read the documentation carefully!
 
 ## `@Qualifier`
-Firstly, in [`TestingQualifiers.kt`](org.acme.TestingQualifiers.kt) in the class `StringProducersQualified` we have two producers of objects of type `String`:
+Firstly, in [`TestingQualifiers.kt`](TestingQualifiers.kt) in the class `StringProducersQualified` we have two producers of objects of type `String`:
 ```kotlin
 @Produces
 fun createTreeString() = "oak"
@@ -44,7 +44,7 @@ And like that the `text` property will contain the value 'oak' whenever this cla
 ## `@Named`
 There is an alternative way to accomplish the exact same as we just saw, namely by using the `@Named` annotation. By simply adding this to a bean or your producer you can use the class/method name (with the first letter becoming lower-case) to distinguish multiple beans/objects of the same type.
 
-An explicit example can be found in [`TestingNamed.kt`](org.acme.TestingNamed.kt). Here we again have two producers
+An explicit example can be found in [`TestingNamed.kt`](TestingNamed.kt). Here we again have two producers
 ```kotlin
 @Produces
 @Named
@@ -74,11 +74,11 @@ fun createString2() = "kiwi"
 ```
 Now let's say we want to inject the 'kiwi' into some bean. How would we accomplish this? You might have guessed it already, we simply add `@Named("fruit")` at the point where we inject the string and then the CDI manager will know which string you wanted. Explicitly, we have:
 ```kotlin
-class TestingQualifiers(
+class TestingNamedWithValue(
     @Named("fruit") private val text: String
 )
 ```
-which then ensure that `text` contains the value 'kiwi'!
+which then ensure that `text` contains the value 'kiwi'! See also [`TestingNamedWithValue.kt`](TestingNamedWithValue.kt).
 
 
 
